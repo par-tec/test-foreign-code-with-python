@@ -130,3 +130,7 @@ dmypy.json
 
 # IDE
 .vscode/
+
+# C
+*.o
+*.so
