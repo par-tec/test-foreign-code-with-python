@@ -1,7 +1,7 @@
 CC=gcc
-CFLAGS=-fPIC -g
+CFLAGS=-fPIC -g -lc -lm -Wall
 
-all: example example.so
+all: example libexample.so
 
 example: example.o
 	$(CC) -o example example.o $(CFLAGS)
@@ -9,8 +9,8 @@ example: example.o
 example.o: example.c
 	$(CC) -c example.c $(CFLAGS)
 
-example.so: example.o
-	$(CC) -shared -o example.so example.o
+libexample.so: example.o
+	$(CC) -shared -o libexample.so example.o
 
 clean:
 	rm -f example example.o example.so
