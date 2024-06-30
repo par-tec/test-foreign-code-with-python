@@ -14,8 +14,7 @@ class Person(Structure):
 
 def test_parse_person():
     p = Person()
-    row = "1;John Dow"
-    row_p = create_string_buffer(row.encode())
-    libexample.parse_person(row_p, byref(p))
+    raw_data = b"1;John Dow"
+    libexample.parse_person(raw_data, byref(p))
     assert p.id == 1
     assert p.name == b"John Dow"
