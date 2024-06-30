@@ -1,5 +1,5 @@
 import ctypes
-from ctypes import Structure, byref, c_char, c_int, create_string_buffer
+from ctypes import Structure, byref, c_char, c_int
 from pathlib import Path
 
 # Load libraries.

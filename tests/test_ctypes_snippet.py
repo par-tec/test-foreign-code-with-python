@@ -1,4 +1,4 @@
-from ctypes import Structure, byref, c_char, c_int, CDLL
+from ctypes import CDLL, Structure, byref, c_char, c_int
 from pathlib import Path
 
 # Load libraries.
@@ -13,6 +13,7 @@ class Person(Structure):
         char name[20];
     };
     """
+
     _fields_ = [("id", c_int), ("name", c_char * 20)]
 
 
