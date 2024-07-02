@@ -7,7 +7,7 @@ from hypothesis import given
 from hypothesis import strategies as st
 
 # Load libraries.
-l_so = Path(__file__).parent.parent / "c-project" / "le.so"
+l_so = Path(__file__).parent.parent / "c-project" / "libexample.so"
 libc = ctypes.CDLL("libc.so.6")
 le = ctypes.CDLL(l_so)
 

@@ -2,7 +2,7 @@ from ctypes import CDLL, Structure, byref, c_char, c_int
 from pathlib import Path
 
 # Load libraries.
-l_so = Path(__file__).parent.parent / "c-project" / "le.so"
+l_so = Path(__file__).parent.parent / "c-project" / "libexample.so"
 le = CDLL(l_so)
 
 

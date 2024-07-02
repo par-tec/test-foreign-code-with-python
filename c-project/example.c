@@ -5,16 +5,21 @@
 
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 
-struct person {
+#define FMT_BAD_NOSPACE "%d;%19s"   // %s stops at first whitespace.
+#define FMT_GOOD "%d;%19[A-Za-z ]m" // Basic working format.
+
+typedef struct person {
   int id;
   char name[20];
-} person;
+} Person;
 
-int parse_person(char *line, struct person *p) {
-  // Beware! There is an error in the format string.
-  // %s reads until the first whitespace character, so it won't work.
-  int n = sscanf(line, "%d;%19[A-Za-z ]m", &p->id, p->name);
+/**
+ * This function contains some errors that need to be fixed.
+ */
+int parse_person(char *line, Person *p) {
+  int n = sscanf(line, FMT_GOOD, &p->id, p->name);
   if (n != 2) {
     return -1;
   }
@@ -24,9 +29,10 @@ int parse_person(char *line, struct person *p) {
 
 int main(int argc, char *argv[]) {
   char line[] = "42;John Doe";
-  struct person p;
+  Person p;
+  memset(&p, 0, sizeof(p));
 
-  if (parse_person(line, &p) == 0) {
+  if (parse_person(line, &p) == 2) {
     printf("ID: %d\n", p.id);
     printf("Name: %s\n", p.name);
   } else {
